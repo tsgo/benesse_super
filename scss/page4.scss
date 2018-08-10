@@ -1,0 +1,193 @@
+/**
+ * @author      ZEUS Design - http://www.zeusdesign.com.tw
+ * @copyright   Copyright (c) 2018 ZEUS Design
+ */
+
+@import "_oa";
+
+.cent_boxs {
+  position: relative;
+
+  &.nocolor100 {
+    margin-top: 50px !important;
+  }
+
+  .p3_boxs {
+    .p3_r {
+
+      .table_boxs {
+        display: inline-block;
+        width: 100%;
+        padding-top: 10px;
+
+        @include range-width(0, 450px) {
+          padding-top: 0;
+        }
+
+        .table_box {
+          display: inline-block;
+          width: 100%;
+          padding: 5px;
+          @include border-radius(5px);
+          @include background-image(linear-gradient(rgba(52, 202, 245, 1.00) 0%, rgba(24, 175, 217, 1.00) 100%));
+          @include clearfix();
+          margin-bottom: 15px;
+
+          &.t70 {
+            width: 70%;
+
+            @include range-width(0, 450px) {
+              width: 100%;
+              margin-bottom: 5px;
+            }
+          }
+          
+          p {
+            display: inline-block;
+            width: 150px;
+            color: white;
+            margin: 0;
+            padding: 0 0 0 10px;
+            font-size: 30px;
+            font-weight: 600;
+            float: left;
+            height: 45px;
+            line-height: 45px;
+
+            @include range-width(0, 450px) {
+              width: 80px;
+              font-size: 16px;
+              height: 30px;
+              line-height: 30px;
+              padding: 0 0 0 1px;
+            }
+          }
+
+          input, select {
+            display: inline-block;
+            width: calc(100% - 150px);
+            float: left;
+            @include border-radius(5px);
+            border: 0;
+            height: 45px;
+            line-height: 45px;
+            padding: 3px 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: black;
+
+            @include range-width(0, 450px) {
+              width: calc(100% - 80px);
+              font-size: 16px;
+              height: 30px;
+              line-height: 25px;
+              padding: 1px 10px;
+            }
+          }
+
+          input::placeholder {
+            font-size: 22px;
+
+            @include range-width(0, 450px) {font-size: 13px;}
+          }
+        }
+
+        .table_type {
+          display: inline-block;
+          width: 100%;
+
+          p {
+            display: inline-block;
+            width: 100%;
+            color: red;
+            padding: 10px 0;
+            margin: 0;
+            font-size: 16px;
+
+            &:first-child {
+              &:before {
+                display: inline-block;
+                content: '01.';
+                font-size: 16px;
+              }
+            }
+            
+            &:last-child {
+              &:before {
+                display: inline-block;
+                content: '02.';
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+
+      .uplo {
+        display: inline-block;
+        @include border-radius(5px);
+        @include background-image(linear-gradient(rgba(52, 202, 245, 1.00) 0%, rgba(24, 175, 217, 1.00) 100%));
+        @include clearfix();
+        margin-bottom: 15px;
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+        width: 29%;
+        padding: 5px 0;
+        outline: 0;
+        cursor: pointer;
+
+        @include range-width(0, 450px) {
+          width: 100%;
+          font-size: 20px;
+          padding: 5px 0;
+        }
+      }
+
+      .ttbox {
+        display: inline-block;
+        width: 100%;
+        @include clearfix();
+        margin-top: 50px;
+
+        @include range-width(0, 450px) {
+          margin-top: 25px;
+        }
+
+        .btn_ok {
+          display: inline-block;
+          cursor: pointer;
+          outline: 0;
+          padding: 5px 10px;
+          color: white;
+          font-size: 30px;
+          @include border-radius(30px);
+          float: right;
+          @include background-image(linear-gradient(rgba(52, 202, 245, 1.00) 0%, rgba(24, 175, 217, 1.00) 100%));
+          @include transition(all .3s);
+          margin-left: 20px;
+
+          @include range-width(0, 450px) {
+            text-align: center;
+            width: calc(100% / 2 - 10px);
+            font-size: 20px;
+            float: none;
+            margin-left: 0;
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            &:last-child {
+              float: right;
+            }
+          }
+
+          &:hover, &:active {
+            @include background-image(linear-gradient(rgba(250, 23, 4, 1.00) 0%, rgba(205, 3, 4, 1.00) 100%)); 
+          }
+        }
+      }
+    }
+  }
+}

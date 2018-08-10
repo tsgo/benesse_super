@@ -1,0 +1,215 @@
+/**
+ * @author      ZEUS Design - http://www.zeusdesign.com.tw
+ * @copyright   Copyright (c) 2018 ZEUS Design
+ */
+
+@import "_oa";
+
+#read_box2 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align: center;
+  &.s {
+    display: inline-block;
+  }
+
+  > * {
+    z-index: 2;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .content {
+    position: absolute;
+    margin: 0 auto;
+    display: inline-block;
+    top: calc(50% - 55px / 2);
+    @include transform(translateY(-50%));
+
+    &.v {
+      left: calc(50% - 1000px / 2);
+      width: 1000px;
+      max-width: calc(100% - 16px * 2);
+      @include range-width(0, 1000px) {
+        left: 50px;
+        max-width: calc(100% - 50px * 2);
+      };
+      .pic {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        padding-top: 25px;
+        height: 0;
+
+        &:before {
+          content: '讀取中..';
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: inline-block;
+          width: 100%;
+          height: 32px;
+          line-height: 32px;
+          margin-top: 16px;
+          color: white;
+          font-size: 20px;
+        }
+
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    // @include transition(top .3s, left .3s, height .3s, width .3s);
+    // background-color: white;
+    // &[data-text]:not([data-text='']) {
+    //   &:after {
+    //     content: attr(data-text);
+    //     position: absolute;
+    //     left: 0;
+    //     top: -36px;
+    //     display: inline-block;
+    //     width: 100%;
+    //     height: 36px;
+    //     color: white;
+    //     font-size: 28px;
+    //     @include overflow-docx3();
+    //   }
+    // }
+    // img {
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   display: inline-block;
+    //   width: 100%;
+    //   height: 100%;
+    // }
+
+    // &.h {
+    //   height: 32px;
+    //   width: 100px;
+    //   line-height: 32px;
+
+    //   left: calc(50% - 100px / 2);
+    //   @include border-radius(3px);
+
+    //   &:after {
+    //     content: '讀取中..';
+    //   }
+    //   img {
+    //     display: none;
+    //   }
+    // }
+    span {
+      display: inline-block;
+      width: 100%;
+      height: 28px;
+      line-height: 28px;
+      font-size: 20px;
+      color: white;
+      @include overflow-docx3();
+    }
+    .pic {
+      display: inline-block;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    background-color: white;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1.00);
+    text-align: center;
+    font-size: 36px;
+  }
+  > .left, > .right {
+    position: absolute;
+    left: 0;
+    top: calc((100% - 55px - 64px) / 2);
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    color: rgba(249, 250, 251, 1.00);
+    font-size: 60px;
+  }
+  .right {
+    left: auto;
+    right: 0;
+  }
+  .bottom {
+    $h: 55px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: $h;
+    text-align: center;
+
+    .center {
+      display: inline-block;
+      margin: 0 auto;
+      @include clearfix();
+      
+      > * {
+        float: left;
+        display: inline-block;
+      }
+      a {
+        width: $h;
+        height: $h;
+        line-height: $h;
+        color: white;
+        font-size: $h - 20px;
+      }
+      span {
+        display: none;
+        height: $h - 12px * 2;
+        line-height: $h - 12px * 2;
+        margin-top: 12px;
+        background-color: white;
+        padding: 0 12px;
+
+        &:before {
+          content: attr(data-a) ' / ' attr(data-b);
+          color: rgba(34, 35, 36, 1.00);
+          font-size: $h -12px;
+        }
+
+        &[data-a][data-b]:not([data-a='0']):not([data-b='0']) {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 1;
+  }
+}

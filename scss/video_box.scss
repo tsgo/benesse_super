@@ -1,0 +1,126 @@
+/**
+ * @author      ZEUS Design - http://www.zeusdesign.com.tw
+ * @copyright   Copyright (c) 2018 ZEUS Design
+ */
+
+@import "_oa";
+
+#video_box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  text-align: center;
+  &.s {
+    display: inline-block;
+  }
+
+  > * {
+    z-index: 2;
+  }
+  .content {
+    position: absolute;
+    left: calc(50% - 1300px / 2);
+    top: 16px;
+    display: inline-block;
+    width: 1300px;
+    max-width: calc(100% - 16px * 2);
+    background-color: white;
+    @include border-radius(6px);
+    padding: 12px;
+    @include range-width(0, 1300px) {
+      left: 16px;
+    };
+    top: 50%;
+    // transform: translateY(-50%);
+    // transform: translateY(-8px);
+    @include transform(translateY(-50%));
+
+    .top {
+      display: inline-block;
+      width: 100%;
+      @include clearfix();
+      > * {
+        float: left;
+        display: inline-block;
+        height: 32px;
+      }
+      span {
+        color: rgba(0, 155, 255, 1.00);
+        line-height: 32px;
+        width: calc(100% - 90px);
+        text-align: left;
+        @include overflow-docx3();
+      }
+      a {
+        float: right;
+        position: relative;
+        max-width: 90px;
+        height: 22px;
+        line-height: 20px;
+        font-size: 14px;
+        margin-top: (32px - 22px) / 2;
+        background-color: rgba(0, 155, 255, 1.00);
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+        padding: 0 8px;
+        padding-left: 14px + 4px + 4px;
+        @include border-radius(3px);
+
+        &:before {
+          position: absolute;
+          top: (22px - 14px) / 2;
+          left: 4px;
+
+          text-align: center;
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          line-height: 14px;
+          background-color: white;
+          @include border-radius(3px);
+          color: rgba(0, 155, 255, 1.00);
+        }
+      }
+    }
+    .video {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      &:before {
+        content: '讀取中..';
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        width: 100%;
+        height: 32px;
+        line-height: 32px;
+        margin-top: 16px;
+      }
+    }
+  }
+  .cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 1;
+  }
+}

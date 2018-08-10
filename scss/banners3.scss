@@ -1,0 +1,293 @@
+/**
+ * @author      ZEUS Design - http://www.zeusdesign.com.tw
+ * @copyright   Copyright (c) 2018 ZEUS Design
+ */
+
+@import "_oa";
+$maxCount: 50;
+
+.banners3 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 12px;
+  height: 280px;
+  &.h {
+    height: 350px;
+  }
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  > a {
+    position: absolute;
+    left: 0;
+    top: calc((100% - 60px - 82px) / 2);
+    text-align: center;
+    display: inline-block;
+    width: 72px;
+    height: 82px;
+    line-height: 82px;
+    font-size: 72px;
+
+    &.right {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .arrs {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    
+    > * {
+      display: inline-block;
+      margin: 0 auto;
+      @include clearfix();
+      > * {
+        float: left;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 15px;
+        font-size: 28px;
+        + * {
+          margin-left: 4px;
+        }
+      }
+      span {
+        display: none;
+        background-color: white;
+        color: rgba(109, 110, 112, 1.00);
+        padding: 0 8px;
+        @include border-radius(3px);
+        font-size: 16px;
+        &[data-text]:not([data-text='']) {
+          display: inline-block;
+          &:before {
+            content: attr(data-text);
+          }
+        }
+      }
+      a {
+        color: rgba(219, 0, 127, 1.00);
+        width: 25px;
+      }
+    }
+  }
+
+  .items {
+    position: absolute;
+    left: 72px;
+    top: 0;
+    display: inline-block;
+    width: calc(100% - 72px * 2);
+    height: calc(100% - 60px);
+    overflow: hidden;
+
+    > .item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      @include transition(left .3s);
+
+      img {
+        display: none;
+      }
+      .pic, .video {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgba(179, 180, 181, 1.00);
+      }
+
+      &:hover {
+        .cover {
+          @include opacity(1);
+        }
+      }
+
+      .cover {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        cursor: pointer;
+        @include transition(opacity .3s);
+        @include opacity(0);
+
+        > div {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          @include transform(translateY(-50%));
+          display: inline-block;
+          width: 100%;
+          span {
+            color: white;
+            display: inline-block;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  @include range-width(0, 450px) {
+    height: 250px !important;
+    > a {
+      display: none;
+    }
+    .arrs {
+      display: none;
+    }
+    .items {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      overflow: auto;
+      > .item {
+        width: calc(100%);
+        height: 100%;
+        @for $i from 1 through $maxCount {
+          &:nth-child(#{$i}) {
+            left: calc(100% * #{$i - 1} + 10px * #{$i - 1});
+          }
+        }
+        .pic {
+          height: calc(100% - 32px);
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .2);
+            z-index: 1;
+          }
+          &:after {
+            content: '\e901';
+            font-family: "icomoon"; speak: none; font-style: normal; font-weight: normal; font-variant: normal;
+            position: absolute;
+            left: calc(50% - 85px / 2);
+            top: calc(50% - 85px / 2);
+            display: inline-block;
+            width: 85px;
+            height: 85px;
+            font-size: 80px;
+            font-weight: bold;
+            color: rgba(231, 231, 231, 1.00);
+            z-index: 2;
+            @include text-shadow(1px 1px 3px rgba(0, 0, 0, .3));
+          }
+        }
+        .cover {
+          @include opacity(1);
+          bottom: 0;
+          top: auto;
+          height: 32px;
+          line-height: 32px;
+          background-color: transparent;
+          > div {
+            top: 0;
+            @include transform(translateY(0));
+            text-align: center;
+            @include overflow-docx3();
+
+            > span {
+              color: rgba(118, 118, 119, 1.00);
+              display: inline;
+              width: auto;
+              line-height: 32px;
+            }
+
+          }
+        }
+      }
+    }
+  };
+
+  @include range-width(450px) {
+    &[data-type='3'] {
+      > a, .arrs > * a {
+        color: rgba(0, 136, 223, 1.00);
+      }
+      .items {
+        > .item {
+          height: 100%;
+          width: calc((100% / 3) - 20px * 2 / 3);
+          @for $i from 1 through $maxCount {
+            &:nth-child(#{$i}) {
+              left: calc(((100% / 3) - 20px * 2 / 3 + 20px) * #{$i - 1});
+            }
+          }
+        }
+      }
+      @for $i from 1 through $maxCount {
+        &[data-i="#{$i}"] {
+          .items {
+            > .item {
+              @for $j from 1 through $maxCount {
+                &:nth-child(#{$j}) {
+                  left: calc(((100% / 3) - 20px * 2 / 3 + 20px) * #{$j - $i});
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &[data-type='6'] {
+      > a {
+        color: rgba(231, 30, 149, 1.00);
+      }
+      .items {
+        > .item {
+          height: calc(50% - 10px);
+          width: calc((100% / 3) - 20px * 2 / 3);
+          &:nth-child(6n + 4), &:nth-child(6n + 5), &:nth-child(6n + 6) {
+            top: calc(50% + 10px);
+          }
+          @for $i from 1 through $maxCount {
+            &:nth-child(#{$i}) {
+              left: calc(((100% / 3) - 20px * 2 / 3 + 20px) * #{floor(($i - 1) % 3) + floor(($i - 1) / 6) * 3});
+            }
+          }
+        }
+      }
+      @for $i from 1 through $maxCount {
+        &[data-i="#{$i}"] {
+          .items {
+            > .item {
+              @for $j from 1 through $maxCount {
+                &:nth-child(#{$j}) {
+                  left: calc(((100% / 3) - 20px * 2 / 3 + 20px) * #{floor(($j - $i) % 3) + floor(($j - $i) / 6) * 3});
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
